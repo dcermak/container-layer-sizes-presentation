@@ -1,0 +1,12 @@
+{
+  "name": "container-layer-sizes",
+  "version": "0.0.1",
+  "description": "Presentation about the Container Layer Visualizer",
+  "main": "index.js",
+  "author": "Dan Čermák <dcermak@suse.com>",
+  "license": "CC-BY-2.0",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "reveal.js": "^4.2.1"
+  }
+}

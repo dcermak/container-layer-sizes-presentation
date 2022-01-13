@@ -1,0 +1,116 @@
+# -*- org-confirm-babel-evaluate: nil; -*-
+#+AUTHOR: Dan Čermák
+#+DATE: January 2022
+#+EMAIL: dcermak@suse.com
+#+TITLE: What made your container fat?
+#+SUBTITLE: Visualizing the size of Container Layers
+
+#+REVEAL_ROOT: ./node_modules/reveal.js/
+#+REVEAL_THEME: simple
+#+REVEAL_PLUGINS: (highlight notes history)
+#+OPTIONS: toc:nil
+#+REVEAL_DEFAULT_FRAG_STYLE: appear
+#+REVEAL_INIT_OPTIONS: transition: 'none', hash: true
+#+OPTIONS: num:nil toc:nil center:nil reveal_title_slide:nil
+#+REVEAL_EXTRA_CSS: ./node_modules/@fortawesome/fontawesome-free/css/all.min.css
+# #+REVEAL_EXTRA_CSS: ./node_modules/eos-icons/dist/css/eos-icons.css
+#+REVEAL_HIGHLIGHT_CSS: ./node_modules/reveal.js/plugin/highlight/zenburn.css
+
+#+REVEAL_TITLE_SLIDE: <h2 class="title">%t</h2>
+#+REVEAL_TITLE_SLIDE: <p class="subtitle" style="color: Gray;">%s</p>
+#+REVEAL_TITLE_SLIDE: <p class="author">%a</p>
+# #+REVEAL_TITLE_SLIDE: <img src="./media/logo-openalt-conference.png" height="150px"/>
+#+REVEAL_TITLE_SLIDE: <p class="date">%d</p>
+#+REVEAL_TITLE_SLIDE: <p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#"><a href="https://creativecommons.org/licenses/by/2.0/be/deed.en" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+#+REVEAL_TITLE_SLIDE: CC BY 2.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i></a></p>
+
+
+* who -u
+
+Dan Čermák
+
+#+REVEAL_HTML: <p style="text-align:left">
+#+REVEAL_HTML: <ul>
+#+REVEAL_HTML: <li style="list-style-type:none;"><i class="fab fa-suse"></i> Software Developer @SUSE
+#+REVEAL_HTML: <li style="list-style-type:none;"><i class="fab fa-fedora"></i> i3 SIG, Package maintainer
+#+REVEAL_HTML: <li style="list-style-type:none;"><i class="far fa-heart"></i> developer tools, testing and documentation</li>
+#+REVEAL_HTML: <li style="list-style-type:none;">&nbsp</li>
+#+REVEAL_HTML: <li style="list-style-type:none;"><i class="fab fa-github"></i> <a href="https://github.com/D4N/">D4N</a> / <a href="https://github.com/dcermak/">dcermak</a></li>
+#+REVEAL_HTML: <li style="list-style-type:none;"><i class="fab fa-mastodon"></i> <a href="https://mastodon.social/@Defolos">@Defolos@mastodon.social</a></li>
+#+REVEAL_HTML: <li style="list-style-type:none;"><i class="fab fa-twitter"></i> <a href="https://twitter.com/DefolosDC/">@DefolosDC</a></li>
+#+REVEAL_HTML: </ul>
+
+
+# * Agenda
+
+#   - [[who -u][who -u]]
+#   - [[Agenda][Agenda]]
+#   - [[What problem is this solving?][What problem is this solving?]]
+#   - [[Sunburst graphs!][Sunburst graphs!]]
+#   - [[Demo][Demo]]
+#   - [[Features][Features]]
+#   - [[Links][Links]]
+#   - [[Legal][Legal]]
+#   - [[Questions?][Questions?]]
+
+
+* What problem is this solving?
+
+#+begin_notes
+- web frontend, actually whole framework to test a SUT
+- tests are SUT centric, not application/library centric!
+
+- automates user input (key presses, mouse movement)
+- grab video feed from SUT \rarr image recognition via OpenCV
+- operating system agnostic
+#+end_notes
+
+#+ATTR_REVEAL: :frag (appear)
+- My container is too big, but where?
+- One of my layers got huge, but which one?
+- [[https://github.com/wagoodman/dive][dive]] is cool, but I want prettier graphs
+
+
+* Sunburst graphs!
+
+#+REVEAL_HTML: <img src="./media/golang_layer_sunburst.png" height="500px"/>
+
+
+* Demo
+
+[[http://localhost:5050]]
+
+
+* Features
+
+#+ATTR_REVEAL: :frag (appear appear appear) :frag_idx (1 2 3)
+- Analyze images from arbitrary registries and podman's local storage
+- Rootless by default
+- Runs as a (containerized) webapp:
+
+#+ATTR_REVEAL: :frag appear :frag_idx 3
+#+begin_src bash
+podman run --rm -p 5050:5050 \
+       ghcr.io/dcermak/container-layer-sizes:latest
+#+end_src
+
+
+* Links
+
+- source code:
+  @@html: <i class="fab fa-github"></i>@@ [[https://github.com/dcermak/container-layer-sizes][=dcermak/container-layer-sizes=]]
+- slides:
+  @@html: <i class="fab fa-github"></i>@@ [[https://github.com/dcermak/container-layer-sizes-presentation][=dcermak/container-layer-sizes-presentation=]]
+
+
+* Legal
+
+- [[https://revealjs.com/][reveal.js]] MIT
+- [[https://fontawesome.com/][Font Awesome]] CC-BY-4.0 and SIL OFL 1.1 and MIT
+- [[https://github.com/dcermak/container-layer-sizes/blob/main/LICENSE][container-layer-sizes]] MIT
+
+
+* Questions?
+
+#+ATTR_REVEAL: :frag appear :frag_idx 1
+*Answers!*
