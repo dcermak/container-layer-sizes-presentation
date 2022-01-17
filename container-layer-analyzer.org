@@ -84,7 +84,7 @@ Dan Čermák
 * Features
 
 #+ATTR_REVEAL: :frag (appear appear appear) :frag_idx (1 2 3)
-- Analyze images from arbitrary registries and podman's local storage
+- Analyze images from arbitrary registries
 - Rootless by default
 - Runs as a (containerized) webapp:
 
