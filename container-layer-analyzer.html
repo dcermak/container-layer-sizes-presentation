@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>What made your container fat?</title>
+<meta name="author" content="(Dan Čermák)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./node_modules/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="./node_modules/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"/>
+<link rel="stylesheet" href="./node_modules/reveal.js/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './node_modules/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2 class="title">What made your container fat?</h2>
+<p class="subtitle" style="color: Gray;">Visualizing the size of Container Layers</p>
+<p class="author">Dan Čermák</p>
+<p class="date">January 2022</p>
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#"><a href="https://creativecommons.org/licenses/by/2.0/be/deed.en" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 2.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i></a></p>
+</section>
+
+
+<section>
+<section id="slide-org2520921">
+<h2 id="org2520921">who -u</h2>
+<p>
+Dan Čermák
+</p>
+
+<p style="text-align:left">
+<ul>
+<li style="list-style-type:none;"><i class="fab fa-suse"></i> Software Developer @SUSE
+<li style="list-style-type:none;"><i class="fab fa-fedora"></i> i3 SIG, Package maintainer
+<li style="list-style-type:none;"><i class="far fa-heart"></i> developer tools, testing and documentation</li>
+<li style="list-style-type:none;">&nbsp</li>
+<li style="list-style-type:none;"><i class="fab fa-github"></i> <a href="https://github.com/D4N/">D4N</a> / <a href="https://github.com/dcermak/">dcermak</a></li>
+<li style="list-style-type:none;"><i class="fab fa-mastodon"></i> <a href="https://mastodon.social/@Defolos">@Defolos@mastodon.social</a></li>
+<li style="list-style-type:none;"><i class="fab fa-twitter"></i> <a href="https://twitter.com/DefolosDC/">@DefolosDC</a></li>
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org58dba55">
+<h2 id="org58dba55">What problem is this solving?</h2>
+<aside class="notes">
+<ul>
+<li>web frontend, actually whole framework to test a SUT</li>
+<li>tests are SUT centric, not application/library centric!</li>
+
+<li>automates user input (key presses, mouse movement)</li>
+<li>grab video feed from SUT &rarr; image recognition via OpenCV</li>
+<li>operating system agnostic</li>
+
+</ul>
+
+</aside>
+
+<ul>
+<li class="fragment appear">My container is too big, but where?</li>
+<li class="fragment appear">One of my layers got huge, but which one?</li>
+<li class="fragment appear"><a href="https://github.com/wagoodman/dive">dive</a> is cool, but I want prettier graphs</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org3cc3a99">
+<h2 id="org3cc3a99">Sunburst graphs!</h2>
+<img src="./media/golang_layer_sunburst.png" height="500px"/>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org7f64ea5">
+<h2 id="org7f64ea5">Demo</h2>
+<p>
+<a href="http://localhost:5050">http://localhost:5050</a>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org432898a">
+<h2 id="org432898a">Features</h2>
+<ul>
+<li data-fragment-index="1" class="fragment appear">Analyze images from arbitrary registries</li>
+<li data-fragment-index="2" class="fragment appear">Rootless by default</li>
+<li data-fragment-index="3" class="fragment appear">Runs as a (containerized) webapp:</li>
+
+</ul>
+
+<div class="org-src-container">
+
+<pre  class="fragment appear" data-fragment-index="3"  ><code class="bash" >podman run --rm -p 5050:5050 \
+       ghcr.io/dcermak/container-layer-sizes:latest
+</code></pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgb0abe93">
+<h2 id="orgb0abe93">Links</h2>
+<ul>
+<li>source code:
+ <i class="fab fa-github"></i> <a href="https://github.com/dcermak/container-layer-sizes"><code>dcermak/container-layer-sizes</code></a></li>
+<li>slides:
+ <i class="fab fa-github"></i> <a href="https://github.com/dcermak/container-layer-sizes-presentation"><code>dcermak/container-layer-sizes-presentation</code></a></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga2e0486">
+<h2 id="orga2e0486">Legal</h2>
+<ul>
+<li><a href="https://revealjs.com/">reveal.js</a> MIT</li>
+<li><a href="https://fontawesome.com/">Font Awesome</a> CC-BY-4.0 and SIL OFL 1.1 and MIT</li>
+<li><a href="https://github.com/dcermak/container-layer-sizes/blob/main/LICENSE">container-layer-sizes</a> MIT</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orga63312f">
+<h2 id="orga63312f">Questions?</h2>
+<p data-fragment-index="1" class="fragment appear">
+<b>Answers!</b>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="./node_modules/reveal.js/dist/reveal.js"></script>
+<script src="./node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="./node_modules/reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealHighlight, RevealNotes, history],
+transition: 'none', hash: true
+});
+
+</script>
+</body>
+</html>
